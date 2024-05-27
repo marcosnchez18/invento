@@ -11,6 +11,8 @@ class AlbumController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    
     public function index()
     {
         //
@@ -21,7 +23,7 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -33,7 +35,7 @@ class AlbumController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource.1
      */
     public function show(Album $album)
     {
@@ -53,7 +55,7 @@ class AlbumController extends Controller
      */
     public function edit(Album $album)
     {
-        //
+        //return view('albumes.edit');
     }
 
     /**
@@ -61,7 +63,7 @@ class AlbumController extends Controller
      */
     public function update(Request $request, Album $album)
     {
-        //
+        //return view('albumes.edit');
     }
 
     /**

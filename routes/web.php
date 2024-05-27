@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('canciones.index', ['canciones' => Cancion::all()]); //al entrar el index directamente ---> welcome
 });
 
 Route::get('/dashboard', function () {
@@ -55,8 +55,6 @@ Route::middleware('auth')->group(function () {
         ]);
     });
 
-    Route::post('/añadidos', [BibliotecaController::class, 'realiza'])->name('canciones.añadidos');
-
     Route::get('/añadidos', function () {
         $albumes = Album::all();
 
@@ -64,6 +62,9 @@ Route::middleware('auth')->group(function () {
             'albumes' => $albumes,
         ]);
     });
+
+    Route::post('/añadidos', [BibliotecaController::class, 'realiza'])->name('canciones.añadidos');
+
 
 
 
