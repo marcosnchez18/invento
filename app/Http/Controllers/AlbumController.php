@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class AlbumController extends Controller
 {
@@ -36,8 +37,16 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
-        //
+        if (!Gate::allows('show-album', $album)) {
+            abort(403);
+       }
+       return view('albumes.show', [
+        'album' => $album,
+
+    ]);
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

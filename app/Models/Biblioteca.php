@@ -10,4 +10,6 @@ class Biblioteca extends Model
     use HasFactory;
 
     protected $table = 'bibliotecas';
+
+    protected $fillable = ['user_id', 'album_id'];
 }

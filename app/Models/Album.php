@@ -41,6 +41,12 @@ class Album extends Model
         return $nombres_canciones ? '<ul>' . $nombres_canciones . '</ul>' : 'Sin canciones';
     }
 
+    public function cantidad_canciones()
+    {
+        $canciones = Cancion::where('album_id', $this->id)->count();
+        return $canciones;
+    }
+
 
     function duracion()
     {
