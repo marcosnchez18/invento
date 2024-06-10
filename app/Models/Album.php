@@ -50,36 +50,38 @@ class Album extends Model
 
     function duracion()
     {
-        $duracionTotal = DB::table('canciones')->selectRaw('SUM(duracion) as total_duration')->first()->total_duration;
+        $duracionTotal = DB::table('canciones')
+            ->where('album_id', $this->id)
+            ->selectRaw('SUM(duracion) as total_duration')
+            ->first()
+            ->total_duration;
+
         $totalInterval = CarbonInterval::create($duracionTotal);
+
         return $totalInterval;
     }
 
 
     public function radio_o_lista()
     {
-        $album = Album::where('id', $this->id)->first();
-            if ($album->asignable_type == 'App\Models\Radio' ) {
-                return 'Radio';
-            }
-            else {
-                return 'Playlist';
-            }
-
+        $album = Album::where('id', $this->id)->first();     //cuando sea id a secas, siempre es first,ya que solo hay un codigo unico
+        if ($album->asignable_type == 'App\Models\Radio') {
+            return 'Radio';
+        } else {
+            return 'Playlist';
+        }
     }
 
 
     public function nombre_radio_o_lista()
     {
         $album = Album::where('id', $this->id)->first();
-            if ($album->asignable_type == 'App\Models\Radio' ) {
-                $n = Radio::find($album->asignable_id);
-                return $n->nombre;
-            }
-            else {
-                $n = Playlist::find($album->asignable_id);
-                return $n->nombre;
-            }
-
+        if ($album->asignable_type == 'App\Models\Radio') {
+            $n = Radio::find($album->asignable_id);
+            return $n->nombre;
+        } else {
+            $n = Playlist::find($album->asignable_id);
+            return $n->nombre;
+        }
     }
 }
