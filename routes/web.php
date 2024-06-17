@@ -55,6 +55,30 @@ Route::middleware('auth')->group(function () {
         ]);
     });
 
+    //Route::get('/tengo', function () {
+
+       // $albumes = [];
+
+
+       // $bibliotecas = Biblioteca::where('user_id', Auth::id())->get();
+
+
+      //  foreach ($bibliotecas as $biblioteca) {
+
+          //  $album = Album::find($biblioteca->album_id);
+
+
+           // if ($album) {
+           //     $albumes[] = $album;
+           // }
+     //   }
+
+
+       // return view('canciones.tengo', [
+        //    'albumes' => $albumes,
+        //]);
+   // });
+
     Route::get('/añadidos', function () {
         $albumes = Album::all();
 
